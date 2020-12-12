@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/taco-thing/static/css/main.10fcb0e5.chunk.css",
-    "main.js": "/taco-thing/static/js/main.7919edf9.chunk.js",
-    "main.js.map": "/taco-thing/static/js/main.7919edf9.chunk.js.map",
+    "main.js": "/taco-thing/static/js/main.6ef2987b.chunk.js",
+    "main.js.map": "/taco-thing/static/js/main.6ef2987b.chunk.js.map",
     "runtime-main.js": "/taco-thing/static/js/runtime-main.54cb7815.js",
     "runtime-main.js.map": "/taco-thing/static/js/runtime-main.54cb7815.js.map",
     "static/js/2.a7c85f2d.chunk.js": "/taco-thing/static/js/2.a7c85f2d.chunk.js",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.54cb7815.js",
     "static/js/2.a7c85f2d.chunk.js",
     "static/css/main.10fcb0e5.chunk.css",
-    "static/js/main.7919edf9.chunk.js"
+    "static/js/main.6ef2987b.chunk.js"
   ]
 }
