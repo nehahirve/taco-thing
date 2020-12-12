@@ -9,11 +9,23 @@ export default class App extends React.Component {
   constructor() {
     super()
     this.fetchTaco = this.fetchTaco.bind(this)
-    this.state = {}
+    this.toggletacoListVisible = this.toggletacoListVisible.bind(this)
+    this.likeTaco = this.likeTaco.bind(this)
+    this.state = { tacoListVisible: false, tacoList: [] }
   }
 
   componentDidMount() {
     this.fetchTaco()
+  }
+
+  toggletacoListVisible() {
+    this.setState({ tacoListVisible: !this.state.tacoListVisible })
+  }
+
+  likeTaco() {
+    const taco = { tacoName: this.state.tacoName, image: this.state.image }
+    this.setState({ tacoList: this.state.tacoList.concat(taco) })
+    console.log(taco)
   }
 
   async fetchTaco() {
@@ -25,19 +37,25 @@ export default class App extends React.Component {
     const taco = await fetch(url, requestOptions).then(response =>
       response.json()
     )
-    console.log(taco)
+    console.log(taco.name)
+    const tacoName = taco.name
     // remove images from markdown
     const regex = /!\[(.*?)\]\((.*?)\)/g
     const strippedTaco = taco.recipe.replace(regex, '')
 
-    const imageUrl =
-      'https://api.unsplash.com/photos/random?client_id=yJn8cRgfTyy6hKHZ-Ce3ZcFCW8i62gdc4TDKz1jBZ_w&query=taco'
+    // const imageUrl =
+    //   'https://api.unsplash.com/photos/random?client_id=yJn8cRgfTyy6hKHZ-Ce3ZcFCW8i62gdc4TDKz1jBZ_w&query=taco'
 
-    const tacoImage = await fetch(imageUrl)
-      .then(response => response.json())
-      .then(image => image.urls.regular)
+    // const tacoImage = await fetch(imageUrl)
+    //   .then(response => response.json())
+    //   .then(image => image.urls.small)
 
-    this.setState({ recipe: strippedTaco, image: tacoImage })
+    this.setState({
+      recipe: strippedTaco,
+      image:
+        'https://repository-images.githubusercontent.com/199493546/d2739980-b53b-11e9-9622-4b4307910050',
+      tacoName: tacoName
+    })
   }
 
   render() {
@@ -45,15 +63,49 @@ export default class App extends React.Component {
       <>
         <header>
           <img src={logo} alt='Tacothing logo' />
+          <button className='my-tacos' onClick={this.toggletacoListVisible}>
+            Favourites
+          </button>
         </header>
         <main>
-          <Recipe recipe={this.state.recipe} image={this.state.image} />
-          <button className='get-taco-button' onClick={this.fetchTaco}>
-            Not delicious? Taco 'nother chance 🌮
-          </button>
+          <TacoGenerator
+            recipe={this.state.recipe}
+            image={this.state.image}
+            fetchTaco={this.fetchTaco}
+            isVisible={!this.state.tacoListVisible}
+            likeTaco={this.likeTaco}
+          />
+          <TacoList
+            isVisible={this.state.tacoListVisible}
+            tacoList={this.state.tacoList}
+          />
         </main>
       </>
     )
+  }
+}
+
+class TacoGenerator extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    if (this.props.isVisible) {
+      return (
+        <div className='taco-generator'>
+          <Recipe recipe={this.props.recipe} image={this.props.image} />
+          <button className='get-taco-button' onClick={this.props.fetchTaco}>
+            Not delicious? Taco 'nother chance 🌮
+          </button>
+          <button className='like-button' onClick={this.props.likeTaco}>
+            Like
+          </button>
+        </div>
+      )
+    } else {
+      return null
+    }
   }
 }
 
@@ -75,6 +127,44 @@ class Recipe extends React.Component {
           <div className='taco-image'>
             <img src={image} alt='a randomly generated taco' />
           </div>
+        </div>
+      </div>
+    )
+  }
+}
+
+class TacoList extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  componentDidUpdate() {
+    console.log(this.props.tacoList)
+  }
+
+  render() {
+    const tacos = this.props.tacoList.map(taco => {
+      return <TacoListItem tacoName={taco.tacoName} image={taco.image} />
+    })
+
+    if (this.props.isVisible) {
+      return <div>{tacos}</div>
+    } else return null
+  }
+}
+
+class TacoListItem extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  render() {
+    return (
+      <div className='taco-card-small'>
+        <div className='taco-name'>
+          <h1>{this.props.tacoName}</h1>
+        </div>
+        <div className='taco-image'>
+          <img src={this.props.image} alt='' />
         </div>
       </div>
     )
