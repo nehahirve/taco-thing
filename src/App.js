@@ -20,7 +20,10 @@ export default class App extends React.Component {
     const url = 'https://taco-randomizer.herokuapp.com/random?full-taco=true'
     const taco = await fetch(url).then(response => response.json())
     console.log(taco)
-    this.setState({ recipe: taco.recipe })
+    // remove images from markdown
+    const regex = /!\[(.*?)\]\((.*?)\)/g
+    const strippedTaco = taco.recipe.replace(regex, '')
+    this.setState({ recipe: strippedTaco })
   }
 
   render() {
@@ -41,6 +44,10 @@ export default class App extends React.Component {
 }
 
 class Recipe extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
   render() {
     const recipe = this.props.recipe
 
