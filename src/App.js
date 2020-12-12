@@ -17,8 +17,14 @@ export default class App extends React.Component {
   }
 
   async fetchTaco() {
+    const requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    }
     const url = 'https://taco-randomizer.herokuapp.com/random?full-taco=true'
-    const taco = await fetch(url).then(response => response.json())
+    const taco = await fetch(url, requestOptions).then(response =>
+      response.json()
+    )
     console.log(taco)
     // remove images from markdown
     const regex = /!\[(.*?)\]\((.*?)\)/g
