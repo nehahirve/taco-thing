@@ -78,13 +78,16 @@ export default class App extends React.Component {
   }
 
   render() {
+    const buttonText = this.state.tacoListVisible ? 'Random Taco' : 'Favourites'
     return (
       <>
         <header>
-          <img src={logo} alt='Tacothing logo' />
-          <button className='my-tacos' onClick={this.toggletacoListVisible}>
-            Favourites
-          </button>
+          <div className='top-bar'>
+            <img src={logo} alt='Tacothing logo' />
+            <button className='my-tacos' onClick={this.toggletacoListVisible}>
+              {buttonText}
+            </button>
+          </div>
         </header>
         <main>
           <TacoGenerator

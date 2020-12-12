@@ -1,4 +1,4 @@
-body {
+main {
   margin: auto;
   max-width: 900px;
 }
@@ -15,10 +15,15 @@ h2 {
   margin-bottom: 1.5rem;
 }
 
+a {
+  color: black;
+}
+
 p,
 ul,
 ol {
   margin-bottom: 1rem;
+  font-size: 1.4rem;
 }
 
 li {
@@ -31,12 +36,20 @@ li {
 
 header {
   width: 100%;
-  // border-bottom: 2px solid black;
+  border-bottom: 1px solid black;
   height: 5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2rem 0 2rem 0;
+  margin-bottom: 2rem;
+  // display: flex;
+  // justify-content: flex-end;
+  .top-bar {
+    max-width: 900px;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 0 2rem 0;
+  }
 }
 
 .my-tacos,
@@ -44,7 +57,6 @@ header {
   border: none;
   outline: none;
   background: #e7e7e9;
-  // color: white;
   border-radius: 0.5rem;
   padding: 1rem 1.5rem;
   font-family: 'Spezia SemiBold';
@@ -52,8 +64,26 @@ header {
 
 .like-button {
   border: #e7e7e9 solid 1px;
-  margin-top: 1rem;
+  padding: 0.3rem 1.3rem;
   background: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    // border: 1px solid;
+    font-family: 'Spezia SemiBold', sans-serif;
+    margin: 0 0.2rem;
+  }
+  .heart {
+    transform: translateY(10%);
+  }
+}
+
+.taco-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
 }
 
 .recipe-card {
@@ -83,39 +113,18 @@ header {
 .get-taco-button {
   padding: 0;
   font-family: 'Spezia SemiBold', sans-serif;
+  font-size: 1.5rem;
   border: none;
   background: none;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
   text-decoration: underline;
-  &:before {
-    display: block;
-    transform: translateY(-10%);
-    content: '';
-    background-image: url('../arrow.svg');
-    background-size: 1rem 1rem;
-    height: 1rem;
-    width: 1rem;
-    margin-right: 0.5rem;
-  }
 }
 
-@media only screen and (max-width: 900px) {
-  body {
-    max-width: 95%;
-  }
-  .title-card {
-    flex-direction: column-reverse;
-    align-items: center;
-    .taco-recipe {
-      max-width: 90vw;
-    }
-    .taco-image {
-      width: 60vw;
-      height: 60vw;
-    }
-  }
+.arrow {
+  transform: translateY(10%);
+  margin-right: 0.5rem;
 }
 
 .taco-card-small {
@@ -136,6 +145,37 @@ header {
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  main {
+    max-width: 95%;
+  }
+  .top-bar {
+    width: 90%;
+  }
+  .get-taco-button {
+    text-align: left;
+  }
+  .title-card {
+    flex-direction: column-reverse;
+    align-items: center;
+    .taco-recipe {
+      max-width: 90vw;
+    }
+    .taco-image {
+      width: 60vw;
+      height: 60vw;
+    }
+  }
+  .taco-card-small {
+    flex-direction: column;
+    height: fit-content;
+    .taco-image {
+      width: 100%;
+      height: 100vw;
     }
   }
 }
