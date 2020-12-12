@@ -29,7 +29,15 @@ export default class App extends React.Component {
     // remove images from markdown
     const regex = /!\[(.*?)\]\((.*?)\)/g
     const strippedTaco = taco.recipe.replace(regex, '')
-    this.setState({ recipe: strippedTaco })
+
+    const imageUrl =
+      'https://api.unsplash.com/photos/random?client_id=yJn8cRgfTyy6hKHZ-Ce3ZcFCW8i62gdc4TDKz1jBZ_w&query=taco'
+
+    const tacoImage = await fetch(imageUrl)
+      .then(response => response.json())
+      .then(image => image.urls.regular)
+
+    this.setState({ recipe: strippedTaco, image: tacoImage })
   }
 
   render() {
@@ -39,7 +47,7 @@ export default class App extends React.Component {
           <img src={logo} alt='Tacothing logo' />
         </header>
         <main>
-          <Recipe recipe={this.state.recipe} />
+          <Recipe recipe={this.state.recipe} image={this.state.image} />
           <button className='get-taco-button' onClick={this.fetchTaco}>
             Not delicious? Taco 'nother chance 🌮
           </button>
@@ -56,6 +64,7 @@ class Recipe extends React.Component {
 
   render() {
     const recipe = this.props.recipe
+    const image = this.props.image
 
     return (
       <div className='recipe-card'>
@@ -64,10 +73,7 @@ class Recipe extends React.Component {
             <ReactMarkdown children={recipe} />
           </div>
           <div className='taco-image'>
-            <img
-              src='https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80'
-              alt='a randomly generated taco'
-            />
+            <img src={image} alt='a randomly generated taco' />
           </div>
         </div>
       </div>
