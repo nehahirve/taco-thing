@@ -1,7 +1,8 @@
 import React from 'react'
-import ReactMarkdown from 'react-markdown'
 import logo from './logo.svg'
-import heart from './heart.svg'
+
+import TacoList from './TacoList'
+import TacoGenerator from './TacoGenerator'
 
 import './styles/reset.css'
 import './styles/App.css'
@@ -100,107 +101,6 @@ export default class App extends React.Component {
           />
         </main>
       </>
-    )
-  }
-}
-
-class TacoGenerator extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
-    if (this.props.isVisible) {
-      return (
-        <div className='taco-generator'>
-          <Recipe recipe={this.props.recipe} image={this.props.image} />
-          <button className='get-taco-button' onClick={this.props.fetchTaco}>
-            Not delicious? Taco 'nother chance 🌮
-          </button>
-          <button className='like-button' onClick={this.props.likeTaco}>
-            Like
-          </button>
-        </div>
-      )
-    } else {
-      return null
-    }
-  }
-}
-
-class Recipe extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
-    const recipe = this.props.recipe
-    const image = this.props.image
-
-    return (
-      <div className='recipe-card'>
-        <div className='title-card'>
-          <div className='taco-recipe'>
-            <ReactMarkdown children={recipe} />
-          </div>
-          <div className='taco-image'>
-            <img src={image} alt='a randomly generated taco' />
-          </div>
-        </div>
-      </div>
-    )
-  }
-}
-
-class TacoList extends React.Component {
-  componentDidUpdate() {
-    console.log(this.props.tacoList)
-  }
-
-  render() {
-    const tacos = this.props.tacoList.map((taco, index) => {
-      return (
-        <TacoListItem
-          tacoName={taco.tacoName}
-          image={taco.image}
-          recipe={taco.recipe}
-          generateTaco={this.props.generateTaco}
-          key={index}
-        />
-      )
-    })
-
-    if (this.props.isVisible) {
-      return <div>{tacos}</div>
-    } else return null
-  }
-}
-
-class TacoListItem extends React.Component {
-  constructor(props) {
-    super(props)
-    this.handleClick = this.handleClick.bind(this)
-  }
-
-  handleClick() {
-    console.log('click handled')
-    this.props.generateTaco(
-      this.props.tacoName,
-      this.props.recipe,
-      this.props.image
-    )
-  }
-
-  render() {
-    return (
-      <div className='taco-card-small' onClick={this.handleClick}>
-        <div className='taco-name'>
-          <h1>{this.props.tacoName}</h1>
-        </div>
-        <div className='taco-image'>
-          <img src={this.props.image} alt='' />
-        </div>
-      </div>
     )
   }
 }
