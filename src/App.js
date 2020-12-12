@@ -14,7 +14,9 @@ export default class App extends React.Component {
         </header>
         <main>
           <Recipe />
-          <button className='get-taco-button'></button>
+          <button className='get-taco-button'>
+            Not delicious? Taco 'nother chance 🌮
+          </button>
         </main>
       </>
     )
