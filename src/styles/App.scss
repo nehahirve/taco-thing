@@ -1,11 +1,9 @@
 body {
   margin: auto;
-  max-width: 800px;
-  border: 2px solid black;
+  max-width: 900px;
 }
 
 header {
-  border: 2px solid black;
   width: 100%;
   height: 5rem;
   display: flex;
@@ -16,7 +14,6 @@ header {
 
 .recipe-card {
   width: 100%;
-  border: 2px solid red;
 }
 
 .title-card {
@@ -26,7 +23,6 @@ header {
 
   .taco-recipe {
     max-width: 70%;
-    border: 1px solid black;
   }
 
   .taco-image {
@@ -58,5 +54,39 @@ header {
     height: 1rem;
     width: 1rem;
     margin-right: 0.5rem;
+  }
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+p,
+ul,
+ol {
+  margin-bottom: 1rem;
+}
+
+li {
+  list-style-position: inside;
+  margin-bottom: 0.2rem;
+}
+
+@media only screen and (max-width: 900px) {
+  body {
+    max-width: 95%;
+  }
+  .title-card {
+    flex-direction: column-reverse;
+    align-items: center;
+    .taco-recipe {
+      max-width: 90vw;
+    }
+    .taco-image {
+      width: 60vw;
+      height: 60vw;
+    }
   }
 }
