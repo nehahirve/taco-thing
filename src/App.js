@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import logo from './logo.svg'
+import heart from './heart.svg'
 
 import './styles/reset.css'
 import './styles/App.css'
@@ -11,6 +12,7 @@ export default class App extends React.Component {
     this.fetchTaco = this.fetchTaco.bind(this)
     this.toggletacoListVisible = this.toggletacoListVisible.bind(this)
     this.likeTaco = this.likeTaco.bind(this)
+    this.generateTaco = this.generateTaco.bind(this)
     this.state = { tacoListVisible: false, tacoList: [] }
   }
 
@@ -23,9 +25,16 @@ export default class App extends React.Component {
   }
 
   likeTaco() {
-    const taco = { tacoName: this.state.tacoName, image: this.state.image }
-    this.setState({ tacoList: this.state.tacoList.concat(taco) })
-    console.log(taco)
+    const taco = {
+      tacoName: this.state.tacoName,
+      image: this.state.image,
+      recipe: this.state.recipe
+    }
+    if (
+      !this.state.tacoList.some(tacoObj => tacoObj.tacoName === taco.tacoName)
+    ) {
+      this.setState({ tacoList: this.state.tacoList.concat(taco) })
+    }
   }
 
   async fetchTaco() {
@@ -58,6 +67,15 @@ export default class App extends React.Component {
     })
   }
 
+  generateTaco(tacoName, tacoRecipe, tacoImage) {
+    this.setState({
+      recipe: tacoRecipe,
+      image: tacoImage,
+      tacoName: tacoName,
+      tacoListVisible: false
+    })
+  }
+
   render() {
     return (
       <>
@@ -78,6 +96,7 @@ export default class App extends React.Component {
           <TacoList
             isVisible={this.state.tacoListVisible}
             tacoList={this.state.tacoList}
+            generateTaco={this.generateTaco}
           />
         </main>
       </>
@@ -134,17 +153,21 @@ class Recipe extends React.Component {
 }
 
 class TacoList extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   componentDidUpdate() {
     console.log(this.props.tacoList)
   }
 
   render() {
-    const tacos = this.props.tacoList.map(taco => {
-      return <TacoListItem tacoName={taco.tacoName} image={taco.image} />
+    const tacos = this.props.tacoList.map((taco, index) => {
+      return (
+        <TacoListItem
+          tacoName={taco.tacoName}
+          image={taco.image}
+          recipe={taco.recipe}
+          generateTaco={this.props.generateTaco}
+          key={index}
+        />
+      )
     })
 
     if (this.props.isVisible) {
@@ -156,10 +179,21 @@ class TacoList extends React.Component {
 class TacoListItem extends React.Component {
   constructor(props) {
     super(props)
+    this.handleClick = this.handleClick.bind(this)
   }
+
+  handleClick() {
+    console.log('click handled')
+    this.props.generateTaco(
+      this.props.tacoName,
+      this.props.recipe,
+      this.props.image
+    )
+  }
+
   render() {
     return (
-      <div className='taco-card-small'>
+      <div className='taco-card-small' onClick={this.handleClick}>
         <div className='taco-name'>
           <h1>{this.props.tacoName}</h1>
         </div>
