@@ -21,7 +21,7 @@ export default class App extends React.Component {
       method: 'GET',
       redirect: 'follow'
     }
-    const url = 'https://taco-randomizer.herokuapp.com/random?full-taco=true'
+    const url = 'https://taco-randomizer.herokuapp.com/random/?full-taco=true'
     const taco = await fetch(url, requestOptions).then(response =>
       response.json()
     )
