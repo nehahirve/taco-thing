@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/taco-thing/static/css/main.10fcb0e5.chunk.css",
+    "main.js": "/taco-thing/static/js/main.1c766104.chunk.js",
+    "main.js.map": "/taco-thing/static/js/main.1c766104.chunk.js.map",
+    "runtime-main.js": "/taco-thing/static/js/runtime-main.54cb7815.js",
+    "runtime-main.js.map": "/taco-thing/static/js/runtime-main.54cb7815.js.map",
+    "static/js/2.a7c85f2d.chunk.js": "/taco-thing/static/js/2.a7c85f2d.chunk.js",
+    "static/js/2.a7c85f2d.chunk.js.map": "/taco-thing/static/js/2.a7c85f2d.chunk.js.map",
+    "static/js/3.7563878d.chunk.js": "/taco-thing/static/js/3.7563878d.chunk.js",
+    "static/js/3.7563878d.chunk.js.map": "/taco-thing/static/js/3.7563878d.chunk.js.map",
+    "index.html": "/taco-thing/index.html",
+    "static/css/main.10fcb0e5.chunk.css.map": "/taco-thing/static/css/main.10fcb0e5.chunk.css.map",
+    "static/js/2.a7c85f2d.chunk.js.LICENSE.txt": "/taco-thing/static/js/2.a7c85f2d.chunk.js.LICENSE.txt",
+    "static/media/reset.css": "/taco-thing/static/media/SpeziaWideTrial-SemiBold.c30271d9.otf",
+    "static/media/App.css": "/taco-thing/static/media/arrow.9275f0f5.svg",
+    "static/media/logo.e01ecb40.svg": "/taco-thing/static/media/logo.e01ecb40.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.54cb7815.js",
+    "static/js/2.a7c85f2d.chunk.js",
+    "static/css/main.10fcb0e5.chunk.css",
+    "static/js/main.1c766104.chunk.js"
+  ]
+}
