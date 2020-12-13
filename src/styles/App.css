@@ -161,6 +161,7 @@ header .top-bar {
 }
 
 .taco-card-small {
+  cursor: pointer;
   border: 2px solid black;
   margin-bottom: 1rem;
   width: 100%;

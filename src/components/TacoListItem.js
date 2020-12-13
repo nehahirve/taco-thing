@@ -7,7 +7,6 @@ export default class TacoListItem extends React.Component {
   }
 
   handleClick() {
-    console.log('click handled')
     this.props.generateTaco(
       this.props.tacoName,
       this.props.recipe,
@@ -22,7 +21,7 @@ export default class TacoListItem extends React.Component {
           <h1>{this.props.tacoName}</h1>
         </div>
         <div className='taco-image'>
-          <img src={this.props.image} alt='' />
+          <img src={this.props.image} alt='a randomly generated taco' />
         </div>
       </div>
     )

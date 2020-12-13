@@ -1,8 +1,8 @@
 import React from 'react'
 import logo from './logo.svg'
 
-import TacoList from './TacoList'
-import TacoGenerator from './TacoGenerator'
+import TacoList from './components/TacoList'
+import TacoGenerator from './components/TacoGenerator'
 
 import './styles/reset.css'
 import './styles/App.css'
@@ -26,6 +26,7 @@ export default class App extends React.Component {
   }
 
   likeTaco() {
+    // adds and removes taco from favourites list
     const taco = {
       tacoName: this.state.tacoName,
       image: this.state.image,
@@ -35,6 +36,12 @@ export default class App extends React.Component {
       !this.state.tacoList.some(tacoObj => tacoObj.tacoName === taco.tacoName)
     ) {
       this.setState({ tacoList: this.state.tacoList.concat(taco) })
+    } else {
+      this.setState({
+        tacoList: this.state.tacoList.filter(
+          tacoObj => tacoObj.tacoName !== taco.tacoName
+        )
+      })
     }
   }
 
@@ -49,7 +56,8 @@ export default class App extends React.Component {
     )
     console.log(taco.name)
     const tacoName = taco.name
-    // remove images from markdown
+
+    // removes any images from markdown data
     const regex = /!\[(.*?)\]\((.*?)\)/g
     const strippedTaco = taco.recipe.replace(regex, '')
 
@@ -78,7 +86,10 @@ export default class App extends React.Component {
   }
 
   render() {
-    const buttonText = this.state.tacoListVisible ? 'Random Taco' : 'Favourites'
+    const buttonText = this.state.tacoListVisible
+      ? 'Generate Taco'
+      : 'Favourites'
+
     return (
       <>
         <header>
@@ -96,6 +107,8 @@ export default class App extends React.Component {
             fetchTaco={this.fetchTaco}
             isVisible={!this.state.tacoListVisible}
             likeTaco={this.likeTaco}
+            tacoName={this.state.tacoName}
+            tacoList={this.state.tacoList}
           />
           <TacoList
             isVisible={this.state.tacoListVisible}
