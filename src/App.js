@@ -61,17 +61,16 @@ export default class App extends React.Component {
     const regex = /!\[(.*?)\]\((.*?)\)/g
     const strippedTaco = taco.recipe.replace(regex, '')
 
-    // const imageUrl =
-    //   'https://api.unsplash.com/photos/random?client_id=yJn8cRgfTyy6hKHZ-Ce3ZcFCW8i62gdc4TDKz1jBZ_w&query=taco'
+    const imageUrl =
+      'https://api.unsplash.com/photos/random?client_id=yJn8cRgfTyy6hKHZ-Ce3ZcFCW8i62gdc4TDKz1jBZ_w&query=taco'
 
-    // const tacoImage = await fetch(imageUrl)
-    //   .then(response => response.json())
-    //   .then(image => image.urls.small)
+    const tacoImage = await fetch(imageUrl)
+      .then(response => response.json())
+      .then(image => image.urls.small)
 
     this.setState({
       recipe: strippedTaco,
-      image:
-        'https://repository-images.githubusercontent.com/199493546/d2739980-b53b-11e9-9622-4b4307910050',
+      image: tacoImage,
       tacoName: tacoName
     })
   }
