@@ -19,7 +19,9 @@ export default class TacoGenerator extends React.Component {
               <span className='arrow'>
                 <img src={arrow} alt='' />
               </span>
-              <span>Not delicious? Taco 'nother chance 🌮</span>
+              <span className='underline'>
+                Not delicious? Taco 'nother chance 🌮
+              </span>
             </button>
             <button className='like-button' onClick={this.props.likeTaco}>
               <span>

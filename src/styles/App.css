@@ -1,6 +1,7 @@
 main {
   margin: auto;
   max-width: 900px;
+  margin-bottom: 3rem;
 }
 
 h1 {
@@ -162,8 +163,7 @@ header .top-bar {
 
 .taco-card-small {
   cursor: pointer;
-  border: 2px solid black;
-  margin-bottom: 1rem;
+  outline: 1px solid black;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -171,14 +171,15 @@ header .top-bar {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   height: 15rem;
 }
 
-.taco-card-small h1 {
-  padding: 2rem;
+.taco-card-small .taco-name {
+  margin-left: 2rem;
+  max-width: 65%;
 }
 
 .taco-card-small .taco-image {
@@ -218,6 +219,7 @@ header .top-bar {
   .title-card .taco-image {
     width: 60vw;
     height: 60vw;
+    margin: 2rem;
   }
   .taco-card-small {
     -webkit-box-orient: vertical;
@@ -227,10 +229,17 @@ header .top-bar {
     height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
   }
   .taco-card-small .taco-image {
     width: 100%;
     height: 100vw;
+    margin-bottom: 2rem;
+  }
+  .taco-card-small .taco-name {
+    margin-left: 2rem;
   }
 }
 /*# sourceMappingURL=App.css.map */

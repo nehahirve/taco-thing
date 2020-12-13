@@ -1,6 +1,7 @@
 main {
   margin: auto;
   max-width: 900px;
+  margin-bottom: 3rem;
 }
 
 h1 {
@@ -129,15 +130,15 @@ header {
 
 .taco-card-small {
   cursor: pointer;
-  border: 2px solid black;
-  margin-bottom: 1rem;
+  outline: 1px solid black;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   height: 15rem;
-  h1 {
-    padding: 2rem;
+  .taco-name {
+    margin-left: 2rem;
+    max-width: 65%;
   }
   .taco-image {
     width: 15rem;
@@ -169,14 +170,20 @@ header {
     .taco-image {
       width: 60vw;
       height: 60vw;
+      margin: 2rem;
     }
   }
   .taco-card-small {
     flex-direction: column;
     height: fit-content;
+    align-items: flex-start;
     .taco-image {
       width: 100%;
       height: 100vw;
+      margin-bottom: 2rem;
+    }
+    .taco-name {
+      margin-left: 2rem;
     }
   }
 }
