@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
+<h1 align="center">
+  TacoThing
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**About:**  
 
-## Available Scripts
+TacoThing is an app that fetches a random taco recipe from the [TacoFancy API](https://github.com/evz/tacofancy-api) and a random taco image from the [Unsplash APi](https://unsplash.com/documentation). It renders the recipe markdown to the page using react-markdown. It also allows you to save your favourite tacos to a list, although for now it doesn't use any kind of localStorage or database to persist the data. Design in the style of the [Thingtesting website](https://thingtesting.com/).
 
-In the project directory, you can run:
 
-### `npm start`
+**Tools / Libraries / Dependencies**
+- [TacoFancy API](https://github.com/evz/tacofancy-api)
+- [Unsplash API](https://unsplash.com/documentation)
+- [create-react-app](https://create-react-app.dev/)
+- [react-markdown](https://www.npmjs.com/package/react-markdown)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**Process:**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+I tried to approach this in iterations, so that the first priority was getting a working app (even if unpolished)
 
-### `npm test`
+I gave myself 4 - 6 hours for this task, this is how I approximately distributed the time: 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 1 hour -- researching, testing the API, looking at the data to see what I could do. Rough figma sketch.
+- 1.5 hours -- coding the basic requirements using create-react-app (first time I used this, decided Gatsby was overkill even though more comfortable in it)
+- 3.5 hours -- details, added the 'liked tacos' page, design
+- 0.5 hours -- cleanup and readme
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Areas to improve**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Need a better / more efficient CSS workflow. Wasted a lot of time in messy styling
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Need to learn markdown, and explore react-markdown more, I removed the images from the markdown using regex, but think there's an easier way to do it with props
 
-### `npm run eject`
+- Should maybe have spent more time on UX / UI feedback for buttons, hover states, clicked states etc. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- The Like button should have possibly been inside the recipe component instead of the TacoGenerator, the responsibility that TacoGenerator has is not specific enough now.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Ideally the generator should re-fetch if we get the same taco twice, and should display some UI on error and loading states.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**Hurdles**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Had to do some googling to learn about CORS errors
 
-## Learn More
+- Originally wanted to break up the markdown and separate out the ingredients and directions for styling but realised that it would take longer time than I had.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
